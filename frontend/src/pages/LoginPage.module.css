@@ -1,0 +1,58 @@
+.login-container {
+    width: 600px;
+    height: fit-content;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #233142;
+    margin: 50px auto 50px auto;
+    border-radius: 10px;
+}
+
+.login-icon {
+    width: 200px;
+    height: 200px;
+    background: #233142;
+}
+
+.login-form {
+    height: fit-content;
+    width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background-color: transparent;
+}
+
+.form-text {
+    color: #e3e3e3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.form-text > a {
+    display: block;
+    width: fit-content;
+    color: #e3e3e3;
+    text-decoration: none;
+}
+
+.form-text> a::after {
+    display: block;
+    content: '';
+    height: 1px;
+    width: 0%;
+    background-color: white;
+    transition: 0.3s ease-in-out;
+}
+.form-text > a:hover::after {
+    width: 100%;
+}
