@@ -1,0 +1,19 @@
+.button-component {
+    all: unset;
+    cursor: pointer;
+    width: 200px;
+    height: 70px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #f95959;
+    transition: 0.3s ease-in-out;
+    color: #e3e3e3b3;
+}
+
+.button-component:hover {
+    border-radius: 5px;
+    background-color: #f95959;
+    color: black;
+}
