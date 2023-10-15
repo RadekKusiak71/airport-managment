@@ -7,7 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #f95959;
+    border: 2px solid #f95959;
     transition: 0.3s ease-in-out;
     color: #e3e3e3b3;
 }

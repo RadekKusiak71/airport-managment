@@ -38,21 +38,33 @@
     gap: 5px;
 }
 
-.form-text > a {
+.form-text>a {
     display: block;
     width: fit-content;
-    color: #e3e3e3;
+    color: #f95959;;
     text-decoration: none;
 }
 
-.form-text> a::after {
+.form-text>a::after {
     display: block;
     content: '';
     height: 1px;
     width: 0%;
-    background-color: white;
+    background-color: #f95959;;
     transition: 0.3s ease-in-out;
 }
-.form-text > a:hover::after {
+
+.form-text>a:hover::after {
     width: 100%;
+}
+
+.error {
+    width: 80%;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 0, 0, 0.431);
+    color: #e3e3e3;
+    border-radius: 5px;
 }
