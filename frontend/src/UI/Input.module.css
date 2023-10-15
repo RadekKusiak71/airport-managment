@@ -4,7 +4,7 @@
     height: 45px;
     padding: 10px;
     background-color: transparent;
-    border: 1px solid #f95959;
+    border: 2px solid #f95959;
     transition: 0.3s ease-in-out;
 }
 .input-component:placeholder-shown{
