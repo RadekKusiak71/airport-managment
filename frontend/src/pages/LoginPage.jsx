@@ -48,7 +48,7 @@ const LoginPage = () => {
   const submitForm = (e) => {
     e.preventDefault()
     if (validateInputs()) {
-      loginUser(JSON.stringify(formData));
+      loginUser(formData);
     } else {
       console.log('Something went wrong');
     }
