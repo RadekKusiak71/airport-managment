@@ -2,8 +2,10 @@ from django.contrib.auth.models import User
 from rest_framework import generics
 from rest_framework import status
 from rest_framework.response import Response
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView
 
-from .serializers import UserRegisterSerializer
+from .serializers import UserRegisterSerializer, MyTokenObtainPairSerializer
 
 
 class UserRegisterView(generics.CreateAPIView):
@@ -31,3 +33,7 @@ class UserRegisterView(generics.CreateAPIView):
             "errors": serializer.errors
         }
         return Response(response_data, status=status.HTTP_400_BAD_REQUEST)
+
+
+class CustomLoginView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
