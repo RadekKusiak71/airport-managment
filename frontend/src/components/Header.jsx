@@ -8,7 +8,7 @@ const Header = () => {
     return (
         <header>
             <div className={classes.header}>
-                <Link className={classes['header-title']}>AIRPORT</Link>
+                <Link to='/' className={classes['header-title']}>AIRPORT</Link>
                 <nav className={classes['header-menu']}>
                     {user ? (
                         <Link onClick={() => logoutUser()} to='/login' className={classes['header-menu-link-auth']}>Logout</Link>
