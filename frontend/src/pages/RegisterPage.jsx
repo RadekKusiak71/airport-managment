@@ -61,7 +61,7 @@ const RegisterPage = () => {
   const submitForm = (e) => {
     e.preventDefault()
     if (validateInputs()) {
-      registerUser(JSON.stringify(formData));
+      registerUser(formData);
     } else {
       console.log('Something went wrong');
     }
