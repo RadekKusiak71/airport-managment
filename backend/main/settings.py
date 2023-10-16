@@ -54,11 +54,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.common.CommonMiddleware',
-<<<<<<< HEAD
     'corsheaders.middleware.CorsMiddleware',
-=======
-    'corsheaders.middleware.CorsMiddleware'
->>>>>>> 52f0d887a9fa0bb90307d05e4e0f1e78ab018d36
 ]
 
 ROOT_URLCONF = 'main.urls'
