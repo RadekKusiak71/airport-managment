@@ -5,6 +5,9 @@ import RegisterPage from './pages/RegisterPage'
 import { AuthProvider } from './context/AuthContext'
 import Card from './UI/Card';
 import Header from './components/Header';
+import HomePage from './pages/HomePage';
+
+
 function App() {
   return (
     <Router>
@@ -12,6 +15,7 @@ function App() {
         <Header />
         <Card>
           <Routes>
+            <Route path='/' element={<HomePage />} exact />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/register' element={<RegisterPage />} />
           </Routes>
