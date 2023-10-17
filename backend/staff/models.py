@@ -9,6 +9,9 @@ class Airport(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        app_label = 'staff'
+
 
 class Flight(models.Model):
     departure_airport = models.ForeignKey(Airport, on_delete=models.CASCADE, related_name='departures')
@@ -18,6 +21,9 @@ class Flight(models.Model):
 
     def __str__(self):
         return f'Flight from {self.departure_airport} to {self.arrival_airport}'
+
+    class Meta:
+        app_label = 'staff'
 
 
 class Reservation(models.Model):
@@ -29,3 +35,6 @@ class Reservation(models.Model):
 
     def __str__(self):
         return f'Reservation for flight {self.flight} by {self.first_name} {self.last_name}'
+
+    class Meta:
+        app_label = 'staff'
