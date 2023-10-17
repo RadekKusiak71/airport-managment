@@ -1,0 +1,42 @@
+{% extends "staff/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="info-bar">
+    <h3>Departure - Arrival</h3>
+    <h3>Departure date</h3>
+    <h3>Arrival Date</h3>
+    <h3>Actions</h3>
+</div>
+{% for flight in flights %}
+    <li class="element-li">
+        <h3 class="element-header">
+            Lot z {{ flight.departure_airport.name }} ({{ flight.departure_airport.airport_code }}) - {{ flight.arrival_airport.name }} ({{ flight.arrival_airport.airport_code }})
+        </h3>
+
+        <p class="element-time">
+            {{ flight.departure_date|date:"Y-m-d H:i" }}
+        </p>
+
+        <p class="element-time">
+            {{ flight.arrival_date|date:"Y-m-d H:i" }}
+        </p>
+
+        <form method="POST" action="{% url 'staff:update_flight' flight.id %}">
+            {% csrf_token %}
+            <input type="submit" value="Edit" class="element-edit">
+        </form>
+
+        <form method="POST" action="{% url 'staff:delete_flight' flight.id %}">
+            {% csrf_token %}
+            <input type="submit" value="Delete" class="element-delete">
+        </form>
+
+    </li>
+{% endfor %}
+<a href="{% url 'staff:add_flight' %}">
+    <div class="bottom-right-div">
+        Add flight
+    </div>
+</a>
+
+{% endblock content %}

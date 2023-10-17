@@ -1,0 +1,15 @@
+{% extends "staff/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="empty-playlist">
+    <h2>Update flight info</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div>
+            <button type="submit" class="submit-button">Update</button>
+        </div>
+    </form>
+</div>
+{% endblock content %}
