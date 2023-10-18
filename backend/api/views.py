@@ -7,7 +7,7 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from staff.models import Airport, Flight
 
-from .serializers import UserRegisterSerializer, MyTokenObtainPairSerializer, AirportSerializer, FlightsSerializer
+from .serializers import UserRegisterSerializer, MyTokenObtainPairSerializer, AirportSerializer, FlightsSerializer, FlightsListSerializer
 
 
 class UserRegisterView(generics.CreateAPIView):
@@ -92,4 +92,4 @@ class FlightsAvailabilityView(generics.CreateAPIView):
 
 class FlightsListView(generics.ListAPIView):
     queryset = Flight.objects.all()
-    serializer_class = FlightsSerializer
+    serializer_class = FlightsListSerializer

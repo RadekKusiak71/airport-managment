@@ -50,3 +50,12 @@ class FlightsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Flight
         fields = '__all__'
+
+
+class FlightsListSerializer(serializers.ModelSerializer):
+    departure_airport = Airport.objects.get()
+    arrival_airport = AirportSerializer()
+
+    class Meta:
+        model = Flight
+        fields = '__all__'
