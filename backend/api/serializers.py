@@ -53,7 +53,7 @@ class FlightsSerializer(serializers.ModelSerializer):
 
 
 class FlightsListSerializer(serializers.ModelSerializer):
-    departure_airport = Airport.objects.get()
+    departure_airport = AirportSerializer()
     arrival_airport = AirportSerializer()
 
     class Meta:
