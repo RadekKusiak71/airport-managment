@@ -88,3 +88,8 @@ class FlightsAvailabilityView(generics.CreateAPIView):
             return Response(response_data, status=404)
 
         return Response(response_data)
+
+
+class FlightsListView(generics.ListAPIView):
+    queryset = Flight.objects.all()
+    serializer_class = FlightsSerializer
