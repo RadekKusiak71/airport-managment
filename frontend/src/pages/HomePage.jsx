@@ -10,7 +10,7 @@ const HomePage = () => {
                 <HomeForm />
             </div>
             <div className={classes['home-flights']}>
-                <HomeDepartures/>
+                <HomeDepartures />
             </div>
         </React.Fragment>
     )
