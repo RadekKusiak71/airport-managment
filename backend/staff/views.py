@@ -3,8 +3,11 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
+from django.core.management import call_command
+from django.shortcuts import redirect
 from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
+from django.views import View
 from django.views.generic import TemplateView, CreateView, ListView, DeleteView, UpdateView
 
 from .forms import FlightForm
@@ -63,3 +66,12 @@ class DeleteFlightView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Flight
     success_url = reverse_lazy('staff:flights')
     success_message = "The flight was deleted successfully."
+
+
+class CleanOldFlightsView(SuccessMessageMixin, View):
+    success_message = "The flight was deleted successfully."
+
+    def post(self, request):
+        call_command('clean_old_flights')
+        messages.success(request, 'Successfully deleted old flights')
+        return redirect(reverse('staff:flights'))

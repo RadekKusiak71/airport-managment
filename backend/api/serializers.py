@@ -3,6 +3,8 @@ from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 
+from staff.models import Flight, Airport
+
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
@@ -36,3 +38,15 @@ class UserRegisterSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("This username is already taken")
 
         return data
+
+
+class AirportSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Airport
+        fields = '__all__'
+
+
+class FlightsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Flight
+        fields = '__all__'

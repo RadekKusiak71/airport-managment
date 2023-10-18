@@ -32,9 +32,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'api.apps.ApiConfig',
+    'staff.apps.StaffConfig',
     'rest_framework',
     'rest_framework_simplejwt',
     'corsheaders',
+    'crispy_forms',
+    'crispy_bootstrap4',
     'rest_framework_simplejwt.token_blacklist',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -124,6 +128,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -177,3 +182,8 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_OBTAIN_SERIALIZER": "rest_framework_simplejwt.serializers.TokenObtainSlidingSerializer",
     "SLIDING_TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer",
 }
+
+LOGIN_REDIRECT_URL = '/staff/flights/'
+LOGIN_URL = 'staff:login'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
