@@ -58,24 +58,43 @@ class FlightsAvailabilityView(generics.CreateAPIView):
         response_data = {'flights': [], 'approximate_flights': []}
 
         departure_date = datetime.strptime(departure_date_str, '%Y-%m-%d')
-        arrival_date = datetime.strptime(arrival_date_str, '%Y-%m-%d')
 
-        flights_exact = Flight.objects.filter(
-            departure_date__date=departure_date.date(),
-            arrival_date__date=arrival_date.date(),
-            departure_airport_id=departure_airport_pk,
-            arrival_airport_id=arrival_airport_pk
-        )
+        if arrival_date_str:
+            arrival_date = datetime.strptime(arrival_date_str, '%Y-%m-%d')
 
-        flights_approximate = Flight.objects.filter(
-            departure_date__date__range=(departure_date - timedelta(days=10), departure_date + timedelta(days=10)),
-            arrival_date__date__range=(arrival_date.date() - timedelta(days=10), arrival_date.date() + timedelta(days=10)),
-            departure_airport_id=departure_airport_pk,
-            arrival_airport_id=arrival_airport_pk
-        ).exclude(id__in=flights_exact)
+            flights_exact = Flight.objects.filter(
+                departure_date__date=departure_date.date(),
+                arrival_date__date=arrival_date.date(),
+                departure_airport_id=departure_airport_pk,
+                arrival_airport_id=arrival_airport_pk
+            )
+
+            flights_approximate = Flight.objects.filter(
+                departure_date__date__range=(
+                    departure_date - timedelta(days=10), departure_date + timedelta(days=10)),
+                arrival_date__date__range=(
+                    arrival_date.date() - timedelta(days=10), arrival_date.date() + timedelta(days=10)),
+                departure_airport_id=departure_airport_pk,
+                arrival_airport_id=arrival_airport_pk
+            ).exclude(id__in=flights_exact)
+
+        else:
+            flights_exact = Flight.objects.filter(
+                departure_date__date=departure_date.date(),
+                departure_airport_id=departure_airport_pk,
+                arrival_airport_id=arrival_airport_pk
+            )
+
+            flights_approximate = Flight.objects.filter(
+                departure_date__date__range=(
+                    departure_date - timedelta(days=10), departure_date + timedelta(days=10)),
+                departure_airport_id=departure_airport_pk,
+                arrival_airport_id=arrival_airport_pk
+            ).exclude(id__in=flights_exact)
 
         flights = FlightsSerializer(flights_exact, many=True).data
-        approximate_flights = FlightsSerializer(flights_approximate, many=True).data
+        approximate_flights = FlightsSerializer(
+            flights_approximate, many=True).data
 
         if flights or approximate_flights:
             response_data = {
