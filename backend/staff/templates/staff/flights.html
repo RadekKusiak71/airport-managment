@@ -1,6 +1,10 @@
 {% extends "staff/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
+<form action="{% url 'staff:clean-flights' %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Clean flights">
+</form>
 <div class="info-bar">
     <h3>Departure - Arrival</h3>
     <h3>Departure date</h3>

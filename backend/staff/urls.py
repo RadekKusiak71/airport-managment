@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import HomeView, CustomLoginView, CustomLogoutView, FlightsView, AddFlightView, UpdateFlightView, DeleteFlightView
+from .views import HomeView, CustomLoginView, CustomLogoutView, FlightsView, AddFlightView, UpdateFlightView, DeleteFlightView, CleanOldFlightsView
 
 app_name = 'staff'
 
@@ -12,4 +12,5 @@ urlpatterns = [
     path('add_flight/', AddFlightView.as_view(), name='add_flight'),
     path('update_flight/<int:pk>', UpdateFlightView.as_view(), name='update_flight'),
     path('delete_flight/<int:pk>', DeleteFlightView.as_view(), name='delete_flight'),
+    path('clean_old_flights/', CleanOldFlightsView.as_view(), name='clean-flights')
 ]
