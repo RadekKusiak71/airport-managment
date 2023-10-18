@@ -21,13 +21,13 @@ const HomeForm = () => {
             </div>
             {checked ? (
                 <>
-                <div className={classes['home-form-destinations']}>
-                    <select name="pets" id="pet-select">
-                        <option value="">Choose Departure Airport</option>
-                        <option value="">Warsaw</option>
-                    </select>
-                </div>
-                <div className={classes['home-form-dates']}>
+                    <div className={classes['home-form-destinations']}>
+                        <select name="pets" id="pet-select">
+                            <option>Choose Departure Airport</option>
+                            <option>Warsaw</option>
+                        </select>
+                    </div>
+                    <div className={classes['home-form-dates']}>
                         <input type="date" />
                     </div>
                 </>
@@ -35,17 +35,18 @@ const HomeForm = () => {
                 <>
                     <div className={classes['home-form-destinations']}>
                         <select name="pets" id="pet-select">
-                            <option value="">Choose Departure Airport</option>
-                            <option value="">Warsaw</option>
+                            <option>Choose Departure Airport</option>
+                            <option>Warsaw</option>
                         </select>
                         <select name="pets" id="pet-select">
-                            <option value="">Choose Destination Airport</option>
-                            <option value="">Bolognia</option>
+                            <option>Choose Destination Airport</option>
+                            <option >Bolognia</option>
                         </select>
                     </div>
                     <div className={classes['home-form-dates']}>
-                        <input type="date" placeholder='Choose Departure Date'/>
-                        <input type="date" value='Choose Arrival Date' />
+                        <input type="date" placeholder='Choose Departure Date' name='departure' />
+                        <input type="date" placeholder='Choose Arrival Date' name='arrival' />
+
                     </div>
                 </>
             )}
